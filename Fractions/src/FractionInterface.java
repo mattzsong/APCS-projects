@@ -38,20 +38,28 @@ public class FractionInterface {
     static int retrieveNumerator(Scanner sc){
         //obtaining and error checking numerator input
         while(true){
-            if(sc.hasNextInt()) return sc.nextInt();
-            else  System.out.println("Invalid input: the input was not an integer. Try again.");
+            String s = sc.next();
+            try{ 
+                return Integer.parseInt(s);
+            }  
+            catch (NumberFormatException e) { 
+                System.out.println("Invalid input: the input was not an integer. Try again.");
+            } 
         }
     }
 
     static int retrieveDenominator(Scanner sc){
         //obtaining and error checking denominator input
-        while(true){                                     //repeats until a valid input is retrieved
-            if(sc.hasNextInt()){
-                int denom = sc.nextInt();
+        while(true){
+            String s = sc.next();              
+            try{ 
+                int denom = Integer.parseInt(s);
                 if(denom != 0) return denom;
                 else   System.out.println("Invalid input: the denominator had an input of 0. Try again.");
-            }
-            else       System.out.println("Invalid input: the input was not an integer. Try again.");
+            }  
+            catch (NumberFormatException e) { 
+                System.out.println("Invalid input: the input was not an integer. Try again.");
+            }                        
         }
     }
 

@@ -9,7 +9,7 @@ public class NonDecreasingSequence {
         //keep asking for operations until the user wants to end
         while(!end){
             System.out.print("What would you like to do?" + 
-            "(a to add number to set, p to print the number set, i to determine longest non-decreasing sequence," +
+            "(a to add number to set, p to print the number set, d to determine longest non-decreasing sequence," +
             "i to determine longest non-increasing sequence, r to reset set of numbers, e to end program): ");
             char action = retrieveOperation(sc);
 

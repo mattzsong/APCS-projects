@@ -1,24 +1,27 @@
-public class Book implements Comparable<Book>{
+public class Book implements Comparable<Book> {
     private String title;
     private String author;
 
-    public Book(String t, String a){
-        title = t;
-        author = a;
+    public Book(String t, String a) {
+        this.title = t;
+        this.author = a;
     }
 
-    public boolean matchTitle(String t){
-        return title.equals(t);
+    public String getTitle() {
+        return this.title;
     }
 
-    public boolean matchAuthor(String a){
-        return author.equals(a);
+    public String getAuthor() {
+        return this.author;
     }
 
-    public int compareTo(Book o){
-        if(matchTitle(o.title)) return author.compareTo(o.author);
-        return title.compareTo(o.title);
+    public int compareTo(Book o) {
+        if (title.equals(o.getTitle()))
+            return author.compareTo(o.getAuthor());
+        return title.compareTo(o.getTitle());
     }
 
-
+    public String toString() {
+        return title + ", " + author;
+    }
 }

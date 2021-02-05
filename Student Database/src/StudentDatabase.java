@@ -44,12 +44,12 @@ public class StudentDatabase {
                 char action = retrieveAction(sc);
                 if (action == 'p') {
                     for (Person p : database) {
-                        if (p instanceof Person && !(p instanceof Student))
+                        if (p instanceof Person)
                             System.out.println(p);
                     }
                 } else if (action == 's') {
                     for (Person p : database) {
-                        if (p instanceof Student && !(p instanceof Graduate || p instanceof Undergraduate)) {
+                        if (p instanceof Student) {
                             System.out.println(p);
                         }
                     }
@@ -65,6 +65,10 @@ public class StudentDatabase {
                             System.out.println(p);
                         }
                     }
+                } else if (action == 'c') {
+                    System.out.println("Persons: " + Person.personCount + "; Students: " + Student.studentCount
+                            + "; Undergraduates: " + Undergraduate.undergradCount + "; Graduates: "
+                            + Graduate.gradCount);
                 } else if (action == 'l') {
                     char grade = retrieveGrade(sc);
                     for (Person p : database) {
@@ -72,7 +76,7 @@ public class StudentDatabase {
                             System.out.println(p);
                         }
                     }
-                } else if(action == 'm'){
+                } else if (action == 'm') {
                     sc.nextLine();
                     String major = retrieveMajor(sc);
                     for (Person p : database) {
@@ -80,7 +84,8 @@ public class StudentDatabase {
                             System.out.println(p);
                         }
                     }
-                } else break;
+                } else
+                    break;
             } catch (InvalidChoiceException e) {
                 System.out.print(e);
             }
@@ -123,9 +128,9 @@ public class StudentDatabase {
 
     static char retrieveAction(Scanner sc) throws Exception {
         System.out.print(
-                "Enter p to print persons, s to print students, u to print undergrads, g to print graduates, l to print persons of a grade level, m to print persons of a major, and q to stop: ");
+                "Enter p to print persons, s to print students, u to print undergrads, g to print graduates, c to print the counts of each type, l to print persons of a grade level, m to print persons of a major, and q to stop: ");
         char a = sc.next().charAt(0);
-        if (!(a == 'p' || a == 's' || a == 'u' || a == 'g' || a == 'l' || a == 'm' || a == 'q'))
+        if (!(a == 'p' || a == 's' || a == 'u' || a == 'g' || a == 'c' || a == 'l' || a == 'm' || a == 'q'))
             throw new InvalidChoiceException("Invalid option. ");
         return a;
     }

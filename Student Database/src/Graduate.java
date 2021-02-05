@@ -1,9 +1,11 @@
 public class Graduate extends Student {
     private String major;
+    public static int gradCount = 0;
 
     public Graduate(String n, String m) {
         super(n);
         major = m;
+        gradCount++;
     }
 
     public String getMajor() {

@@ -22,6 +22,7 @@ public class Fraction implements Number{
     
     public void reduce(){
         //reduces fraction to lowest terms 
+        if(this.num == 0) return;
         int gcf = Math.min(Math.abs(this.num), Math.abs(this.denom));   //smaller absolute value integer between numerator and denominator
         boolean found = false;
         while(!found){                                                  //decrement gcf until one is found, and divide the gcf by numerator and denominator
@@ -48,6 +49,7 @@ public class Fraction implements Number{
         int resultDenominator = this.denom * n.getDenom();
         int resultNumerator = this.num * n.getDenom() + n.getNum() * this.denom;
         return new Fraction(resultNumerator, resultDenominator);
+
     }
 
     @Override

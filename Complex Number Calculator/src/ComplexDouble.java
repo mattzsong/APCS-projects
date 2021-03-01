@@ -13,6 +13,14 @@ public class ComplexDouble implements Number {
         return imag;
     }
 
+    public void setReal(double d){
+        real = d;
+    }
+
+    public void setImag(double d){
+        imag = d;
+    }
+
     public ComplexDouble getConjugate(){
         return new ComplexDouble(real, -1 * imag);
     }
@@ -37,5 +45,12 @@ public class ComplexDouble implements Number {
         ComplexDouble newDenominator = (ComplexDouble) n.multiply(n.getConjugate());
         ComplexDouble newNumerator = (ComplexDouble) multiply(n.getConjugate());
         return new ComplexDouble(newNumerator.getReal() / newDenominator.getReal(), newNumerator.getImag() / newDenominator.getReal()); 
+    }
+
+    public String toString(){
+        if(imag > 0){
+            return real.toString() + "+" + imag.toString() + "i";
+        }
+        return real.toString() + "-" +  imag.toString() + "i";
     }
 }

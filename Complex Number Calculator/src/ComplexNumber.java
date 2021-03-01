@@ -23,6 +23,8 @@ public class ComplexNumber implements Number{
         ComplexNumber n = (ComplexNumber) o;
         Fraction realResult = (Fraction) real.add(n.getReal());
         Fraction imagResult = (Fraction) imag.add(n.getImag());
+        realResult.reduce();
+        imagResult.reduce();
         return new ComplexNumber(realResult, imagResult);
     }
     @Override
@@ -30,6 +32,8 @@ public class ComplexNumber implements Number{
         ComplexNumber n = (ComplexNumber) o;
         Fraction realResult = (Fraction) real.subtract(n.getReal());
         Fraction imagResult = (Fraction) imag.subtract(n.getImag());
+        realResult.reduce();
+        imagResult.reduce();
         return new ComplexNumber(realResult, imagResult);
     }
     
@@ -38,6 +42,8 @@ public class ComplexNumber implements Number{
         ComplexNumber n = (ComplexNumber) o;
         Fraction realResult = (Fraction) real.multiply(n.getReal()).subtract(imag.multiply(n.getImag()));
         Fraction imagResult = (Fraction) real.multiply(n.getImag()).add(imag.multiply(n.getReal()));
+        realResult.reduce();
+        imagResult.reduce();
         return new ComplexNumber(realResult, imagResult);
     }
 
@@ -49,13 +55,15 @@ public class ComplexNumber implements Number{
         ComplexNumber denominator = (ComplexNumber) n.multiply(conjugate);
         Fraction realResult = (Fraction) numerator.getReal().divide(denominator.getReal());
         Fraction imagResult = (Fraction) numerator.getImag().divide(denominator.getReal());
+        realResult.reduce();
+        imagResult.reduce();
         return new ComplexNumber(realResult, imagResult);
     }
 
     public String toString(){
         if(imag.getNum() > 0){
-            return real.toString() + "+" + imag.toString();
+            return real.toString() + "+" + imag.toString() + "i";
         }
-        return real.toString() + imag.toString();
+        return real.toString() + "-" +  imag.toString() + "i";
     }
 }

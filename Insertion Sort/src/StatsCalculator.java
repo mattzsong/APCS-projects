@@ -36,12 +36,12 @@ public class StatsCalculator {
     }
 
     public double findMedian() throws Exception{
+        if(numbers.isEmpty()) throw new EmptyListException();
         if(numbers.size() % 2 == 1) return Double.valueOf(numbers.get(numbers.size()/2));
         else return Double.valueOf((numbers.get(numbers.size()/2) + numbers.get(numbers.size()/2-1)))/2;
     }
 
     public ArrayList<Integer> findModes() throws Exception{
-        if(numbers.isEmpty()) throw new EmptyListException();
         HashMap<Integer, Integer> frequencies = new HashMap<>();
         for(int n: numbers){
             if(!frequencies.containsKey(n)) frequencies.put(n, 1);
